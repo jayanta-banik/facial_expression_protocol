@@ -24,9 +24,10 @@ void loop() {
     }
   }
   //  String s = Serial.readStringUntil('\n');
-  ch = Serial.parseInt();
-  if (ch != 0 ) {
-    if (flash_light && ch != 1) {
+  int pat = Serial.parseInt();
+  if (pat != 0 ) {
+    ch = pat;
+    if (flash_light) {
       for (int j = 0; j < 6; j++)
         face.setIntensity(j, intensity);
       for (int j = 0; j < 6; j++)
