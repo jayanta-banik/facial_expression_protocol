@@ -1,7 +1,7 @@
-# facial_expression_protocol
+# Facial_Expression_Protocol
 Arduino based code for MAX72XX LED driver based facial expresion
 
-## biblography<br>
+### Biblography<br>
 https://xantorohara.github.io/led-matrix-editor/ <br>
 http://wayoda.github.io/LedControl/ <br>
 https://www.arduino.cc/ <br>
