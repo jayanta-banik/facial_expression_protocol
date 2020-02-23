@@ -5,7 +5,7 @@ int ch = current_emotion;
 void setup() {
   // put your setup code here, to run once:
   restart_face();
-  Serial.begin(9600);
+  Serial.begin(115200);
   emotion_chooser(current_emotion);
   Serial.println("**ready**\n");
 }
@@ -23,9 +23,24 @@ void loop() {
       }
     }
   }
-  //  String s = Serial.readStringUntil('\n');
-  int pat = Serial.parseInt();
-  if (pat != 0 ) {
+  String s = Serial.readStringUntil('\n');
+  int pat = analys_s(s);
+  //  int pat = Serial.parseInt();
+//  Serial.print("pat = ");
+//  Serial.println(pat);
+  if (pat < 0) {
+    pat = pat * -1;
+    switch (pat) {
+      case 7:
+        Serial.println("enter intensity");
+        while (!Serial.available());
+        change_intensity(Serial.parseInt());
+        Serial.print("intensity set at ");
+        Serial.println(intensity);
+        break;
+    }
+  }
+  else if (pat > 0) {
     ch = pat;
     if (flash_light) {
       for (int j = 0; j < 6; j++)
@@ -39,9 +54,9 @@ void loop() {
     if ( ch == 1) {
       flash_light = true;
     }
-    else if (ch >= 2 && ch <= 127) {
+    else if (ch <= 127) {
       current_emotion = ch;
     }
-    delay(100);
   }
+  //    delay(100);
 }

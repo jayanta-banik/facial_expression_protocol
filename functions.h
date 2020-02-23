@@ -1051,14 +1051,24 @@ boolean isBlinkable(byte data) {
   return false;
 }
 
-void change_intensity(byte new_intensity) {
+void change_intensity(int new_intensity) {
   //check intensity
-  if (intensity > 8)
+  if (new_intensity > 8)
     Serial.println("**Error:too high intensity**\n");
-  else if (intensity < 0)
+  else if (new_intensity < 0)
     Serial.println("**Error: too low intensity**\n");
   else
     intensity = new_intensity;
+}
+
+int analys_s(String s){
+//  Serial.println(s);
+  if(s.indexOf("intensity") >= 0 ){
+   return -7; 
+  }
+  else{
+      return s.toInt();
+  }
 }
 
 void restart_face() {
