@@ -1,0 +1,3 @@
+inputs:
+numeric : a numeric intput only will signify the emotion code.
+intensity: "intensity" keyword trigger a setting intensity protocol. when prompted to enter intensity enter a value between 0 and 8 inclusive.
