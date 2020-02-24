@@ -16,7 +16,7 @@ void loop() {
   while (!Serial.available()) {
     if ( isBlinkable(ch)) {
       unsigned long currentMillis = millis();
-      if (currentMillis - previousMillis >= interval) {
+      if (currentMillis - previousMillis >= interval || currentMillis < previousMillis) {
         // save the last time you blinked the LED
         previousMillis = currentMillis;
         emotion_chooser(131);
